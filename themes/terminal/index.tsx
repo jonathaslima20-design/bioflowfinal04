@@ -86,7 +86,7 @@ export function TerminalTheme({ profile, links, socials, videos, banners, track 
             </div>
             <div>
               {profile.display_name && <div style={{ color: caret, fontWeight: 700, fontFamily: getFontStack(s.titleFont, 'inherit') }}>{profile.display_name}</div>}
-              {profile.bio && <div className="mt-1 opacity-85 text-xs">&quot;{profile.bio}&quot;</div>}
+              {profile.bio && <div className="mt-1 opacity-85 text-xs whitespace-pre-line">&quot;{profile.bio}&quot;</div>}
             </div>
           </div>
 

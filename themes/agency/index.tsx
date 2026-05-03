@@ -223,7 +223,7 @@ export function AgencyTheme({ profile, links, socials, videos, banners, track }:
 
           {profile.bio && (
             <p
-              className="mt-6 text-sm leading-relaxed max-w-sm"
+              className="mt-6 text-sm leading-relaxed max-w-sm whitespace-pre-line"
               style={{ color: text, opacity: 0.75 }}
             >
               {profile.bio}

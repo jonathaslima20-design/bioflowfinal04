@@ -33,7 +33,7 @@ export const retrowaveMeta: BioThemeMeta = {
       { value: 'berlin', label: 'Berlim' },
     ], default: 'miami', group: 'Cenario' },
     { key: 'chrome', label: 'Cromo do nome', type: 'slider', min: 0, max: 100, step: 5, suffix: '%', default: 80, group: 'Tipografia' },
-    { key: 'tagline', label: 'Frase neon (acima do nome)', type: 'text', default: '', placeholder: 'Ex: NEON NIGHTS', maxLength: 40, group: 'Textos' },
+    { key: 'tagline', label: 'Frase neon (acima do nome)', type: 'textarea', default: '', placeholder: 'Ex: NEON NIGHTS', maxLength: 80, rows: 2, group: 'Textos' },
     { key: 'footerText', label: 'Rodapé neon', type: 'text', default: '', placeholder: 'Ex: STAY RETRO', maxLength: 40, group: 'Textos' },
     { key: 'accentCustom', label: 'Cor de destaque (hex livre)', type: 'colorPicker', default: '#F472B6', group: 'Cores' },
     { key: 'useAccentCustom', label: 'Usar cor personalizada', type: 'toggle', default: false, group: 'Cores' },
@@ -147,7 +147,7 @@ export function RetrowaveTheme({ profile, links, socials, videos, banners, track
 
           {s.tagline && s.tagline.trim() && (
             <div
-              className="mt-3 text-xs tracking-[0.5em] uppercase"
+              className="mt-3 text-xs tracking-[0.5em] uppercase whitespace-pre-line"
               style={{ color: pal.c, textShadow: `0 0 8px ${pal.a}` }}
             >
               {s.tagline}
@@ -170,7 +170,7 @@ export function RetrowaveTheme({ profile, links, socials, videos, banners, track
           >
             {profile.display_name}
           </h1>
-          {profile.bio && <p className="mt-3 text-sm opacity-95 max-w-xs" style={{ color: profile.text_color, textShadow: '0 0 6px rgba(0,0,0,0.7)' }}>{profile.bio}</p>}
+          {profile.bio && <p className="mt-3 text-sm opacity-95 max-w-xs whitespace-pre-line" style={{ color: profile.text_color, textShadow: '0 0 6px rgba(0,0,0,0.7)' }}>{profile.bio}</p>}
 
           {s.showSocials !== false && socials?.length > 0 && (
             <div className="mt-5 flex gap-2 flex-wrap justify-center">

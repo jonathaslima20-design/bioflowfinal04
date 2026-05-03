@@ -115,7 +115,8 @@ export default function SettingsPage() {
         </div>
         <div>
           <label className="font-bold text-sm">Bio</label>
-          <textarea className="brutal-input w-full mt-1" rows={3} value={profile.bio || ''} onChange={e => setProfile({ ...profile, bio: e.target.value })} />
+          <textarea className="brutal-input w-full mt-1" rows={5} maxLength={300} value={profile.bio || ''} onChange={e => setProfile({ ...profile, bio: e.target.value })} />
+          <p className="text-xs text-black/60 mt-1">Pressione Enter para quebrar linha.</p>
         </div>
         <button onClick={save} className="brutal-btn bg-bioyellow py-3 mt-2">Salvar</button>
         {saved && <div className="font-bold">Salvo!</div>}

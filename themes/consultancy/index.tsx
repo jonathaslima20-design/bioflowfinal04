@@ -84,7 +84,7 @@ export function ConsultancyTheme({ profile, links, socials, videos, banners, tra
             {profile.display_name}
           </h1>
           {profile.bio && (
-            <p className={`mt-5 text-[15px] leading-relaxed max-w-sm ${s.heroAlign === 'center' ? 'mx-auto' : ''}`} style={{ opacity: 0.85 }}>
+            <p className={`mt-5 text-[15px] leading-relaxed max-w-sm whitespace-pre-line ${s.heroAlign === 'center' ? 'mx-auto' : ''}`} style={{ opacity: 0.85 }}>
               {profile.bio}
             </p>
           )}

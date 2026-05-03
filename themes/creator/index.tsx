@@ -54,7 +54,7 @@ export const creatorMeta: BioThemeMeta = {
       { value: 'scale', label: 'Scale' },
     ], default: 'wiggle', group: 'Cards' },
     { key: 'holoCta', label: 'CTA holografico', type: 'toggle', default: false, group: 'Cards' },
-    { key: 'tagline', label: 'Frase divertida (subtítulo)', type: 'text', default: '', placeholder: 'Ex: Content Creator & Vibes', maxLength: 80, group: 'Textos' },
+    { key: 'tagline', label: 'Frase divertida (subtítulo)', type: 'textarea', default: '', placeholder: 'Ex: Content Creator & Vibes', maxLength: 120, rows: 2, group: 'Textos' },
     { key: 'accentCustom', label: 'Cor de destaque (hex livre)', type: 'colorPicker', default: '#FF6B9D', group: 'Cores' },
     { key: 'useAccentCustom', label: 'Usar cor personalizada', type: 'toggle', default: false, group: 'Cores' },
     { key: 'highlightCustom', label: 'Cor do marca-texto (hex livre)', type: 'colorPicker', default: '#FDE047', group: 'Titulo' },
@@ -210,11 +210,11 @@ export function CreatorTheme({ profile, links, socials, videos, banners, track }
             )}
           </h1>
           {s.tagline && s.tagline.trim() && (
-            <div className="mt-2 text-sm font-bold" style={{ color: accent }}>{s.tagline}</div>
+            <div className="mt-2 text-sm font-bold whitespace-pre-line" style={{ color: accent }}>{s.tagline}</div>
           )}
           {profile.bio && (
             <p
-              className="mt-3 text-[15px] max-w-xs leading-relaxed"
+              className="mt-3 text-[15px] max-w-xs leading-relaxed whitespace-pre-line"
               style={{ color: text, opacity: 0.8, fontWeight: 500 }}
             >
               {profile.bio}

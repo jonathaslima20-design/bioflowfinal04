@@ -49,7 +49,7 @@ export const atlasMeta: BioThemeMeta = {
       { value: 'primary', label: 'Primario destacado' },
     ], default: 'filled', group: 'Links' },
     { key: 'customStatus', label: 'Texto do status (personalizado)', type: 'text', default: '', placeholder: 'Deixe vazio para usar preset', maxLength: 60, group: 'Textos' },
-    { key: 'tagline', label: 'Subtítulo abaixo do nome', type: 'text', default: '', placeholder: 'Ex: Head of Design @ Acme', maxLength: 80, group: 'Textos' },
+    { key: 'tagline', label: 'Subtítulo abaixo do nome', type: 'textarea', default: '', placeholder: 'Ex: Head of Design @ Acme', maxLength: 120, rows: 2, group: 'Textos' },
     { key: 'statusColorCustom', label: 'Cor do status (personalizada)', type: 'colorPicker', default: '#10B981', group: 'Cores' },
     { key: 'useStatusColorCustom', label: 'Usar cor personalizada de status', type: 'toggle', default: false, group: 'Cores' },
     { key: 'accentCustom', label: 'Cor de destaque (hex livre)', type: 'colorPicker', default: '#2563EB', group: 'Cores' },
@@ -165,14 +165,14 @@ export function AtlasTheme({ profile, links, socials, videos, banners, track }: 
           </div>
 
           {s.tagline && s.tagline.trim() && (
-            <div className="mt-1 text-xs font-medium" style={{ color: accent }}>
+            <div className="mt-1 text-xs font-medium whitespace-pre-line" style={{ color: accent }}>
               {s.tagline}
             </div>
           )}
 
           {profile.bio && (
             <p
-              className="mt-3 text-[15px] max-w-sm leading-relaxed"
+              className="mt-3 text-[15px] max-w-sm leading-relaxed whitespace-pre-line"
               style={{ color: `${text}CC` }}
             >
               {profile.bio}

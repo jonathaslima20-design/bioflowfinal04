@@ -36,7 +36,7 @@ export const neonlabMeta: BioThemeMeta = {
     { key: 'useSecondaryCustom', label: 'Usar cor secundária personalizada', type: 'toggle', default: false, group: 'Neon' },
     { key: 'accentCustom', label: 'Cor de destaque (hex livre)', type: 'colorPicker', default: '#FF2D95', group: 'Neon' },
     { key: 'useAccentCustom', label: 'Usar cor de destaque personalizada', type: 'toggle', default: false, group: 'Neon' },
-    { key: 'tagline', label: 'Frase neon (acima do nome)', type: 'text', default: '', placeholder: 'Ex: NEON LAB', maxLength: 40, group: 'Textos' },
+    { key: 'tagline', label: 'Frase neon (acima do nome)', type: 'textarea', default: '', placeholder: 'Ex: NEON LAB', maxLength: 80, rows: 2, group: 'Textos' },
     { key: 'footerText', label: 'Texto do rodapé', type: 'text', default: '', placeholder: 'Ex: SYSTEM ONLINE', maxLength: 60, group: 'Textos' },
     { key: 'titleFont', label: 'Fonte do título', type: 'fontFamily', default: 'grotesk', group: 'Tipografia' },
     { key: 'bodyFont', label: 'Fonte do corpo', type: 'fontFamily', default: 'inter', group: 'Tipografia' },
@@ -98,7 +98,7 @@ export function NeonLabTheme({ profile, links, socials, videos, banners, track }
           </div>
           {s.tagline && s.tagline.trim() && (
             <div
-              className="mt-4 text-[11px] tracking-[0.5em] uppercase"
+              className="mt-4 text-[11px] tracking-[0.5em] uppercase whitespace-pre-line"
               style={{ color: secondary, textShadow: `0 0 8px ${secondary}` }}
             >
               {s.tagline}
@@ -112,7 +112,7 @@ export function NeonLabTheme({ profile, links, socials, videos, banners, track }
           }}>
             {profile.display_name}
           </h1>
-          {profile.bio && <p className="mt-3 text-sm opacity-90 max-w-xs leading-relaxed">{profile.bio}</p>}
+          {profile.bio && <p className="mt-3 text-sm opacity-90 max-w-xs leading-relaxed whitespace-pre-line">{profile.bio}</p>}
 
           {s.showSocials !== false && socials?.length > 0 && (
             <div className="mt-6 flex gap-2 flex-wrap justify-center">

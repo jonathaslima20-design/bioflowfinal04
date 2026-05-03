@@ -35,7 +35,7 @@ export const prismMeta: BioThemeMeta = {
     { key: 'useSecondaryCustom', label: 'Usar cor secundária personalizada', type: 'toggle', default: false, group: 'Holografico' },
     { key: 'accentCustom', label: 'Cor de destaque (hex livre)', type: 'colorPicker', default: '#A5F3FC', group: 'Holografico' },
     { key: 'useAccentCustom', label: 'Usar cor de destaque personalizada', type: 'toggle', default: false, group: 'Holografico' },
-    { key: 'tagline', label: 'Frase abaixo do nome', type: 'text', default: '', placeholder: 'Ex: Holographic Creator', maxLength: 80, group: 'Textos' },
+    { key: 'tagline', label: 'Frase abaixo do nome', type: 'textarea', default: '', placeholder: 'Ex: Holographic Creator', maxLength: 120, rows: 2, group: 'Textos' },
     { key: 'footerText', label: 'Texto do rodapé', type: 'text', default: '', placeholder: 'Ex: Crafted in light', maxLength: 80, group: 'Textos' },
     { key: 'titleFont', label: 'Fonte do título', type: 'fontFamily', default: 'inter', group: 'Tipografia' },
     { key: 'bodyFont', label: 'Fonte do corpo', type: 'fontFamily', default: 'inter', group: 'Tipografia' },
@@ -82,7 +82,7 @@ export function PrismTheme({ profile, links, socials, videos, banners, track }: 
               {profile.display_name}
             </h1>
           )}
-          {profile.bio && <p className="mt-3 text-sm opacity-80 max-w-xs leading-relaxed">{profile.bio}</p>}
+          {profile.bio && <p className="mt-3 text-sm opacity-80 max-w-xs leading-relaxed whitespace-pre-line">{profile.bio}</p>}
 
           {s.showSocials !== false && socials?.length > 0 && (
             <div className="mt-6 flex gap-2 flex-wrap justify-center">

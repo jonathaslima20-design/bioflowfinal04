@@ -202,7 +202,7 @@ export function ConversionTheme({ profile, links, socials, videos, banners, trac
 
           {profile.bio && (
             <p
-              className="mt-4 text-[15px] max-w-sm leading-relaxed"
+              className="mt-4 text-[15px] max-w-sm leading-relaxed whitespace-pre-line"
               style={{ color: text, opacity: 0.85, fontWeight: 500 }}
             >
               {profile.bio}

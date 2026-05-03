@@ -103,7 +103,7 @@ export function KeynoteTheme({ profile, links, socials, videos, banners, track }
           {profile.display_name}
         </h1>
         {profile.bio && (
-          <p className="mt-4 text-lg leading-snug max-w-md" style={{ opacity: 0.9 }}>{profile.bio}</p>
+          <p className="mt-4 text-lg leading-snug max-w-md whitespace-pre-line" style={{ opacity: 0.9 }}>{profile.bio}</p>
         )}
 
         <div className="mt-6 flex gap-2 flex-wrap">

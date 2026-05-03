@@ -37,7 +37,7 @@ export const auroraMeta: BioThemeMeta = {
     { key: 'useSecondaryCustom', label: 'Usar cor personalizada secundária', type: 'toggle', default: false, group: 'Aurora' },
     { key: 'accentCustom', label: 'Cor de destaque (hex livre)', type: 'colorPicker', default: '#7DD3FC', group: 'Aurora' },
     { key: 'useAccentCustom', label: 'Usar cor personalizada de destaque', type: 'toggle', default: false, group: 'Aurora' },
-    { key: 'tagline', label: 'Frase abaixo do nome', type: 'text', default: '', placeholder: 'Ex: Designer & Curator', maxLength: 80, group: 'Textos' },
+    { key: 'tagline', label: 'Frase abaixo do nome', type: 'textarea', default: '', placeholder: 'Ex: Designer & Curator', maxLength: 120, rows: 2, group: 'Textos' },
     { key: 'footerText', label: 'Texto do rodapé', type: 'text', default: '', placeholder: 'Ex: Crafted in glass', maxLength: 80, group: 'Textos' },
     { key: 'titleFont', label: 'Fonte do título', type: 'fontFamily', default: 'inter', group: 'Tipografia' },
     { key: 'bodyFont', label: 'Fonte do corpo', type: 'fontFamily', default: 'inter', group: 'Tipografia' },
@@ -96,9 +96,9 @@ export function AuroraTheme({ profile, links, socials, videos, banners, track }:
             </h1>
           )}
           {s.tagline && s.tagline.trim() && (
-            <div className="mt-2 text-xs tracking-wider" style={{ color: accent }}>{s.tagline}</div>
+            <div className="mt-2 text-xs tracking-wider whitespace-pre-line" style={{ color: accent }}>{s.tagline}</div>
           )}
-          {profile.bio && <p className="mt-3 text-sm opacity-80 max-w-xs leading-relaxed" style={{ color: profile.text_color }}>{profile.bio}</p>}
+          {profile.bio && <p className="mt-3 text-sm opacity-80 max-w-xs leading-relaxed whitespace-pre-line" style={{ color: profile.text_color }}>{profile.bio}</p>}
 
           {s.showSocials !== false && socials?.length > 0 && (
             <div className="mt-6 flex gap-2 flex-wrap justify-center">

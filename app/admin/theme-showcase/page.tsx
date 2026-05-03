@@ -397,7 +397,7 @@ export default function AdminThemeShowcasePage() {
             </Field>
             <Field label="Bio" full>
               <textarea value={profileOverride?.bio ?? ''} placeholder="Criadora de conteúdo • SP"
-                onChange={(e) => setProfile('bio', e.target.value)} rows={2}
+                onChange={(e) => setProfile('bio', e.target.value)} rows={4}
                 className="brutal-input py-2 px-3 text-sm w-full font-normal resize-y" />
             </Field>
           </div>

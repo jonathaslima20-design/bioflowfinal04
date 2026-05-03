@@ -151,7 +151,7 @@ export function CyberTheme({ profile, links, socials, videos, banners, track }: 
             >
               {profile.display_name}
             </h1>
-            {profile.bio && <div className="mt-2 text-xs leading-relaxed opacity-90" style={{ color: profile.text_color }}>&gt; {profile.bio}</div>}
+            {profile.bio && <div className="mt-2 text-xs leading-relaxed opacity-90 whitespace-pre-line" style={{ color: profile.text_color }}>&gt; {profile.bio}</div>}
           </div>
         </div>
 

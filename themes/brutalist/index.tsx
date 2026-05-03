@@ -61,7 +61,7 @@ export function BrutalistTheme({ profile, links, socials, videos, banners, track
               {profile.display_name}
             </h1>
           )}
-          {profile.bio && <p className="mt-3 max-w-xs" style={{ color: profile.text_color }}>{profile.bio}</p>}
+          {profile.bio && <p className="mt-3 max-w-xs whitespace-pre-line" style={{ color: profile.text_color }}>{profile.bio}</p>}
 
           {s.showSocials && socials?.length > 0 && (
             <div className="mt-5 flex gap-2 flex-wrap justify-center">

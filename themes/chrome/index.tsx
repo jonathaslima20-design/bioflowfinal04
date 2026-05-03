@@ -31,7 +31,7 @@ export const chromeMeta: BioThemeMeta = {
     { key: 'useAmbientCustom', label: 'Usar ambiente personalizado', type: 'toggle', default: false, group: 'Ambiente' },
     { key: 'accentCustom', label: 'Cor de destaque (hex livre)', type: 'colorPicker', default: '#60A5FA', group: 'Ambiente' },
     { key: 'useAccentCustom', label: 'Usar destaque personalizado', type: 'toggle', default: false, group: 'Ambiente' },
-    { key: 'tagline', label: 'Frase abaixo do nome', type: 'text', default: '', placeholder: 'Ex: Design Engineer', maxLength: 80, group: 'Textos' },
+    { key: 'tagline', label: 'Frase abaixo do nome', type: 'textarea', default: '', placeholder: 'Ex: Design Engineer', maxLength: 120, rows: 2, group: 'Textos' },
     { key: 'footerText', label: 'Texto do rodapé', type: 'text', default: '', placeholder: 'Ex: Made with light', maxLength: 80, group: 'Textos' },
     { key: 'titleFont', label: 'Fonte do título', type: 'fontFamily', default: 'inter', group: 'Tipografia' },
     { key: 'bodyFont', label: 'Fonte do corpo', type: 'fontFamily', default: 'inter', group: 'Tipografia' },
@@ -71,9 +71,9 @@ export function ChromeTheme({ profile, links, socials, videos, banners, track }:
             </h1>
           )}
           {s.tagline && s.tagline.trim() && (
-            <div className="mt-2 text-xs tracking-widest uppercase" style={{ color: accent }}>{s.tagline}</div>
+            <div className="mt-2 text-xs tracking-widest uppercase whitespace-pre-line" style={{ color: accent }}>{s.tagline}</div>
           )}
-          {profile.bio && <p className="mt-3 text-[15px] opacity-80 max-w-xs leading-relaxed">{profile.bio}</p>}
+          {profile.bio && <p className="mt-3 text-[15px] opacity-80 max-w-xs leading-relaxed whitespace-pre-line">{profile.bio}</p>}
 
           {s.showSocials !== false && socials?.length > 0 && (
             <div className="mt-6 flex gap-2 flex-wrap justify-center">
