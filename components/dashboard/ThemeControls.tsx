@@ -157,6 +157,7 @@ function CategoryChip({ label, active, onClick }: { label: string; active: boole
 
 function Control({ def, value, onChange }: { def: ControlDef; value: any; onChange: (v: any) => void }) {
   if (def.type === 'coreColor') {
+    const isCustom = !def.palette.includes(value);
     return (
       <div className="text-xs font-bold">
         <div className="mb-2">{def.label}</div>
@@ -170,6 +171,21 @@ function Control({ def, value, onChange }: { def: ControlDef; value: any; onChan
               aria-label={c}
             />
           ))}
+          <label
+            className={`w-9 h-9 brutal-border cursor-pointer relative overflow-hidden flex items-center justify-center ${isCustom ? 'brutal-shadow' : ''}`}
+            style={{ backgroundColor: isCustom ? value : 'transparent' }}
+            title="Cor personalizada"
+          >
+            {!isCustom && (
+              <span className="text-[16px] leading-none select-none pointer-events-none" style={{ background: 'linear-gradient(135deg, red, orange, yellow, green, cyan, blue, violet)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>⬤</span>
+            )}
+            <input
+              type="color"
+              value={isCustom ? value : '#000000'}
+              onChange={(e) => onChange(e.target.value)}
+              className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+            />
+          </label>
         </div>
       </div>
     );
@@ -292,6 +308,7 @@ function Control({ def, value, onChange }: { def: ControlDef; value: any; onChan
   }
 
   if (def.type === 'color') {
+    const isCustom = !def.palette.includes(value);
     return (
       <div className="text-xs font-bold">
         <div className="mb-2">{def.label}</div>
@@ -305,6 +322,21 @@ function Control({ def, value, onChange }: { def: ControlDef; value: any; onChan
               aria-label={c}
             />
           ))}
+          <label
+            className={`w-8 h-8 brutal-border cursor-pointer relative overflow-hidden flex items-center justify-center ${isCustom ? 'brutal-shadow' : ''}`}
+            style={{ backgroundColor: isCustom ? value : 'transparent' }}
+            title="Cor personalizada"
+          >
+            {!isCustom && (
+              <span className="text-[14px] leading-none select-none pointer-events-none" style={{ background: 'linear-gradient(135deg, red, orange, yellow, green, cyan, blue, violet)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>⬤</span>
+            )}
+            <input
+              type="color"
+              value={isCustom ? value : '#000000'}
+              onChange={(e) => onChange(e.target.value)}
+              className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+            />
+          </label>
         </div>
       </div>
     );
