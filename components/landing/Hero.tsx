@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { PhoneMockup } from './PhoneMockup';
+import { ThemeCarousel } from './ThemeCarousel';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 export function Hero() {
@@ -82,7 +82,7 @@ export function Hero() {
           <div className="absolute -top-6 -left-6 w-20 h-20 bg-biolime brutal-border rotate-12 -z-0" />
           <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-bioblue brutal-border -rotate-6 -z-0" />
           <div className="relative z-10">
-            <PhoneMockup />
+            <ThemeCarousel />
           </div>
         </div>
       </div>

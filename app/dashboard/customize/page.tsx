@@ -7,6 +7,7 @@ import { THEMES, getTheme } from '@/themes/registry';
 import { ThemeMockup } from '@/components/themes/ThemeMockup';
 import { ThemeControls } from '@/components/dashboard/ThemeControls';
 import { Check } from 'lucide-react';
+import { fetchAllShowcasePresets, catalogDemoFor, ShowcasePreset } from '@/lib/theme-showcase';
 
 export default function CustomizePage() {
   const [profileId, setProfileId] = useState('');
@@ -16,7 +17,17 @@ export default function CustomizePage() {
   const [videos, setVideos] = useState<any[]>([]);
   const [banners, setBanners] = useState<any[]>([]);
   const [saved, setSaved] = useState(false);
+  const [showcase, setShowcase] = useState<Record<string, ShowcasePreset>>({});
   const saveTimer = useRef<any>(null);
+
+  useEffect(() => {
+    (async () => {
+      const all = await fetchAllShowcasePresets();
+      const map: Record<string, ShowcasePreset> = {};
+      for (const p of all) map[p.theme_key] = p;
+      setShowcase(map);
+    })();
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -47,16 +58,17 @@ export default function CustomizePage() {
   }
 
   function updateThemeSetting(themeKey: string, key: string, value: any) {
-    const current = (profile?.theme_settings && typeof profile.theme_settings === 'object') ? profile.theme_settings : {};
-    const nextSettings = { ...current, [themeKey]: { ...(current[themeKey] || {}), [key]: value } };
-    const next = { ...profile, theme_settings: nextSettings };
-    setProfile(next);
-    if (saveTimer.current) clearTimeout(saveTimer.current);
-    saveTimer.current = setTimeout(async () => {
-      await supabase.from('profiles').update({ theme_settings: nextSettings }).eq('id', profileId);
-      setSaved(true);
-      setTimeout(() => setSaved(false), 1500);
-    }, 300);
+    setProfile((prev: any) => {
+      const current = (prev?.theme_settings && typeof prev.theme_settings === 'object') ? prev.theme_settings : {};
+      const nextSettings = { ...current, [themeKey]: { ...(current[themeKey] || {}), [key]: value } };
+      if (saveTimer.current) clearTimeout(saveTimer.current);
+      saveTimer.current = setTimeout(async () => {
+        await supabase.from('profiles').update({ theme_settings: nextSettings }).eq('id', profileId);
+        setSaved(true);
+        setTimeout(() => setSaved(false), 1500);
+      }, 300);
+      return { ...prev, theme_settings: nextSettings };
+    });
   }
 
   async function resetThemeSettings(themeKey: string) {
@@ -93,8 +105,7 @@ export default function CustomizePage() {
   }
 
   function updateCoreField(field: string, value: any) {
-    const next = { ...profile, [field]: value };
-    setProfile(next);
+    setProfile((prev: any) => ({ ...prev, [field]: value }));
     if (saveTimer.current) clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(async () => {
       await supabase.from('profiles').update({ [field]: value }).eq('id', profileId);
@@ -137,6 +148,9 @@ export default function CustomizePage() {
           <div className="grid sm:grid-cols-2 gap-4">
             {Object.values(THEMES).map(({ meta }) => {
               const active = activeKey === meta.key;
+              const preset = showcase[meta.key];
+              const hasShowcase = preset?.show_in_catalog;
+              const demo = hasShowcase ? catalogDemoFor(preset) : null;
               return (
                 <button
                   key={meta.key}
@@ -144,7 +158,15 @@ export default function CustomizePage() {
                   className={`group brutal-border text-left transition-all overflow-hidden bg-white ${active ? 'brutal-shadow -translate-y-0.5' : 'hover:-translate-y-0.5 hover:brutal-shadow'}`}
                 >
                   <div className="relative bg-[#F7F7F5] border-b-[3px] border-black flex items-center justify-center py-6">
-                    <ThemeMockup themeKey={meta.key} />
+                    <ThemeMockup
+                      themeKey={meta.key}
+                      overrides={demo?.profile as any}
+                      links={demo?.links}
+                      socials={demo?.socials}
+                      videos={demo?.videos}
+                      banners={demo?.banners}
+                      themeSettings={demo?.themeSettings}
+                    />
                     {active && (
                       <span className="absolute top-2 right-2 text-[10px] font-bold uppercase bg-black text-white px-2 py-1 brutal-border flex items-center gap-1 z-10">
                         <Check className="w-3 h-3" /> Ativo

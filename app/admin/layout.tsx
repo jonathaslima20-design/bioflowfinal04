@@ -8,6 +8,7 @@ import {
   LayoutDashboard,
   Users,
   Palette,
+  Images,
   CreditCard,
   LogOut,
   Zap,
@@ -21,6 +22,7 @@ const nav = [
   { href: '/admin', label: 'Visão geral', icon: LayoutDashboard, exact: true },
   { href: '/admin/users', label: 'Usuários', icon: Users, exact: false },
   { href: '/admin/themes', label: 'Temas', icon: Palette, exact: false },
+  { href: '/admin/theme-showcase', label: 'Vitrine', icon: Images, exact: false },
   { href: '/admin/plans', label: 'Planos', icon: CreditCard, exact: false },
 ];
 

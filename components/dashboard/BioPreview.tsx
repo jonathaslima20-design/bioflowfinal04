@@ -46,7 +46,7 @@ export function BioPreview({
   const SCALE = 0.55;
   const INNER_WIDTH = 582;
   const FRAME_WIDTH = Math.round(INNER_WIDTH * SCALE);
-  const FRAME_HEIGHT = 640;
+  const FRAME_HEIGHT = 576;
   const INNER_HEIGHT = Math.round(FRAME_HEIGHT / SCALE);
 
   return (
